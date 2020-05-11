@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="#app">
+        <input type="text" v-model='user.name' id="ipt">
+        <ul>
+            <li>{{user.name}}---{{user.age}}</li>
+            <li>{{changeUserName}}</li>
+        </ul>
+        <div v-html="message"></div>
+        <button v-on:click="changeName">改变名字</button>
+    </div>
+    <script src="./MVVM.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data() {
+                return {
+                    user:{
+                        name:"xuhang",
+                        age:18
+                    },
+                    message:"<div>v-html的使用</div>"
+                }
+            },
+            computed: {
+                changeUserName(){
+                    return this.user.name+"+conputed"
+                }
+            },
+            methods: {
+                changeName(){
+                    console.log(this)
+                    this.user.name = "徐航"
+                }
+            },
+        })
+    </script>
+</body>
+</html>
